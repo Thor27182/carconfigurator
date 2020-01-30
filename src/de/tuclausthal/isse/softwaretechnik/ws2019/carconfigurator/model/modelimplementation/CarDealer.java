@@ -1,4 +1,4 @@
-package de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model;
+package de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.modelimplementation;
 
 /*
 Fassade für das model
