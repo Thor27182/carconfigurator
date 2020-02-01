@@ -4,25 +4,29 @@ import java.util.ArrayList;
 
 public class Car {
 
-    //<--- Fields --->
+    //<--- Attibuts --->
     private String model;
     private int generation;
     private Doors doors;
     private Fuel fuel;
+
+    //<--- Associations --->
     private ArrayList<Feature> features;
     private ArrayList<Configurationpackage> configurationpackages;
+    private CarDealer carDealer;
+    private Customer customer;
+    private Order order;
 
     //<--- Construtors --->
-    public Car(String model, int generation, Doors doors, Fuel fuel, ArrayList<Feature> features, ArrayList<Configurationpackage> configurationpackages) {
+    public Car(String model, int generation, CarDealer carDealer) {
         this.model = model;
         this.generation = generation;
-        this.doors = doors;
-        this.fuel = fuel;
-        this.features = features;
-        this.configurationpackages = configurationpackages;
+        this.doors = null;
+        this.fuel = null;
+        this.carDealer = carDealer;
     }
 
-    //<--- Methodes --->
+    //<--- Getters and Setters --->
     public String getModel() {
         return model;
     }

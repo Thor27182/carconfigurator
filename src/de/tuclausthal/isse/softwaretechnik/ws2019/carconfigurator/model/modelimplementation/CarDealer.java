@@ -7,33 +7,36 @@ Fassade für das model
 import java.util.ArrayList;
 
 public class CarDealer {
-    private ArrayList<Car> cars;
-    private ArrayList<Customer> customers;
+
+    //<--- Associations --->
+    private ArrayList<Car> carCatalog;
+    private ArrayList<Customer> ourLoyalCustomers;
     private ArrayList<Order> orders;
     private ArrayList<Staffmember> staffmembers;
 
-    public CarDealer(ArrayList<Car> cars, ArrayList<Customer> customers, ArrayList<Order> orders, ArrayList<Staffmember> staffmembers) {
-        this.cars = cars;
-        this.customers = customers;
-        this.orders = orders;
-        this.staffmembers = staffmembers;
+    //<--- Constructors --->
+    public CarDealer(){
+        this.carCatalog = new ArrayList<Car>();
+        this.ourLoyalCustomers = new ArrayList<Customer>();
+        this.orders = new ArrayList<>();
+        this.staffmembers = new ArrayList<>();
     }
 
-
+    //<--- Getters and Setters --->
     public ArrayList<Car> getCars() {
-        return cars;
+        return carCatalog;
     }
 
     public void setCars(ArrayList<Car> cars) {
-        this.cars = cars;
+        this.carCatalog = cars;
     }
 
     public ArrayList<Customer> getCustomers() {
-        return customers;
+        return ourLoyalCustomers;
     }
 
     public void setCustomers(ArrayList<Customer> customers) {
-        this.customers = customers;
+        this.ourLoyalCustomers = customers;
     }
 
     public ArrayList<Order> getOrders() {
@@ -50,5 +53,19 @@ public class CarDealer {
 
     public void setStaffmembers(ArrayList<Staffmember> staffmembers) {
         this.staffmembers = staffmembers;
+    }
+
+
+    //<--- Methodes --->
+    public void addCarToCatalog(Car car) {
+        carCatalog.add(car);
+    }
+
+    public void addStaffmemberToStaff(Staffmember staffmember) {
+        staffmembers.add(staffmember);
+    }
+
+    public void addCustomer(Customer customer) {
+        ourLoyalCustomers.add(customer);
     }
 }
