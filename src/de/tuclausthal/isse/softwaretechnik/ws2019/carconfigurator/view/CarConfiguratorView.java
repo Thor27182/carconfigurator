@@ -13,13 +13,18 @@ import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.CarC
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.Feature;
 
 public class CarConfiguratorView {
-	static Feature feature = new Feature();
+	static Feature feature = new Feature("1", 1);
 	static CarConfiguratorView view = new CarConfiguratorView();
-	String availableModel[];
-	String amountOfDoors[];
-	String kraftstoff[];
-	String zusatzoptionen[];
-	String paket[];
+	static ArrayList<String> viewFeatureList = new ArrayList<String>();
+	static ArrayList<String> viewConfigurationpackageList = new ArrayList<String>();
+	static ArrayList<String> viewDoorsList = new ArrayList<String>();
+	static ArrayList<String> viewCarmodelList = new ArrayList<String>();
+	static ArrayList<String> viewFuelList = new ArrayList<String>();
+	static String availableModel[];
+	static String amountOfDoors[];
+	static String kraftstoff[];
+	static String zusatzoptionen[];
+	static String paket[];
 
 	static JComboBox cBamountOfDoors = new JComboBox();
 	static JComboBox cBchooseModel = new JComboBox();
@@ -28,11 +33,11 @@ public class CarConfiguratorView {
 	static JComboBox cBchoosePaket = new JComboBox();
 
 	public CarConfiguratorView() {
-		Frame();
+
 	}
 
 	public static void main(String[] args) {
-		new CarConfiguratorView();
+		Frame();
 	}
 
 	public static void Frame() {
@@ -56,13 +61,7 @@ public class CarConfiguratorView {
 		JButton backButton = new JButton("zurück");
 
 		// DropdownVariablen
-		String availableModel[] = { "- none -", "Golf 4", "Golf 3", "Golf 2" };
-		String amountOfDoors[] = { "- none -", "3", "5" };
-		String kraftstoff[] = { "- none -", "Benzin", "Diesel" };
-		String zusatzoptionen[] = { "- none -", "1", "2", "3" };
-		feature.setZusatzoptionen(zusatzoptionen);
-
-		String paket[] = { "- none -", "Sport-Paket", "Luxus-Paket" };
+		setStringArray();
 
 		setCBchooseModel(availableModel);
 		setCBamountOfDoors(amountOfDoors);
@@ -99,18 +98,35 @@ public class CarConfiguratorView {
 		cBchooseModel.addActionListener(new CarConfiguratorController(view));
 	}
 
-	public void setStringArray() {
+	public static void setStringArray() {
 		// DropdownVariablen
-		String availableModel[] = { "- none -", "Golf 4", "Golf 3", "Golf 2" };
-		String amountOfDoors[] = { "- none -", "3", "5" };
-		String kraftstoff[] = { "- none -", "Benzin", "Diesel" };
-		String zusatzoptionen[] = new String[100];
-		ArrayList<String> features = new ArrayList<String>();
-		feature.initializeFeatureList(features);
-		for (int i = 0; i < features.size(); i++) {
-			zusatzoptionen[i] = features.get(i);
-		}
-		String paket[] = { "- none -", "Sport-Paket", "Luxus-Paket" };
+		feature.initializeFeatureList();
+		viewFeatureList = feature.getFeatureList();
+		availableModel = new String[4];
+		availableModel[0] = "- none -";
+		availableModel[1] = "Golf 4";
+		availableModel[2] = "Golf 3";
+		availableModel[3] = "Golf 2";
+		amountOfDoors = new String[3];
+		amountOfDoors[0] = "- none -";
+		amountOfDoors[1] = "3";
+		amountOfDoors[2] = "5";
+		kraftstoff = new String[3];
+		kraftstoff[0] = "- none -";
+		kraftstoff[1] = "Benzin";
+		kraftstoff[2] = "Diesel";
+		// availableModel = viewCarmodelList.toArray(new
+		// String[viewCarmodelList.size()]);
+		// amountOfDoors = viewDoorsList.toArray(new String[viewDoorsList.size()]);
+		// kraftstoff = viewFuelList.toArray(new String[viewFuelList.size()]);
+		zusatzoptionen = viewFeatureList.toArray(new String[viewFeatureList.size()]);
+		// paket = viewConfigurationpackageList.toArray(new
+		// String[viewConfigurationpackageList.size()]);
+		paket = new String[3];
+		paket[0] = "- none -";
+		paket[1] = "Sport-Paket";
+		paket[2] = "Luxus-Paket";
+
 	}
 
 	public void setEnableDropdown(JComboBox cBamountOfDoors, JComboBox cBchooseKraftstoff,

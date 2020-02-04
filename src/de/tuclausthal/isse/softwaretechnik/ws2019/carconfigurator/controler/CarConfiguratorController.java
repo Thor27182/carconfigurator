@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
@@ -13,11 +14,11 @@ import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.CarConfig
 public class CarConfiguratorController implements ActionListener, ItemListener {
 
 	private CarConfiguratorView view;
-	private Feature feature;
+	private static Feature feature;
 
 	public CarConfiguratorController(CarConfiguratorView view) {
 		this.view = view;
-		this.feature = new Feature();
+		this.feature = new Feature("1", 1);
 	}
 
 	@Override
@@ -48,6 +49,13 @@ public class CarConfiguratorController implements ActionListener, ItemListener {
 	public void itemStateChanged(ItemEvent event) {
 		if (event.getStateChange() == ItemEvent.SELECTED) {
 			Object item = event.getItem();
+
+			Object object = event.getSource();
+			if (object == view.getCBchooseZusatzoptionen()) {
+				ArrayList<String> a = new ArrayList<String>();
+				a = feature.getFeatureList();
+				feature.checkAvailableFeatures(a, item);
+			}
 
 			if (item != "- none -") {
 				System.out.print(item);
