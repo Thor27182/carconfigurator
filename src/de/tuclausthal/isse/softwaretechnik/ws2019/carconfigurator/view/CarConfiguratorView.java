@@ -18,13 +18,12 @@ public class CarConfiguratorView {
 
 	public static void Frame() {
 		JFrame frame = new JFrame("Autokonfigurator");
-		frame.setSize(500, 300);
+		frame.setSize(600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(6, 2));
 		frame.add(panel);
-		frame.setVisible(true);
 
 		// labels
 		JLabel labelChooseModel = new JLabel("wählen Sie ihr Automodell");
@@ -62,6 +61,7 @@ public class CarConfiguratorView {
 		panel.add(cBchoosePaket); // Dropdown Kraftstoff
 		panel.add(bestellButton);
 		panel.add(backButton);
+		frame.setVisible(true);
 
 		cBamountOfDoors.setEnabled(false);
 		cBchooseKraftstoff.setEnabled(false);
