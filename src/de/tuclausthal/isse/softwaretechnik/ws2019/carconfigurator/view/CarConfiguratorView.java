@@ -182,4 +182,30 @@ public class CarConfiguratorView {
 		// cBchoosePaket.setModel(model);
 		cBchoosePaket = new JComboBox(stringArray);
 	}
+
+	public String getCBKraftstoffSelItem() {
+		String item = (String) cBchooseKraftstoff.getSelectedItem();
+		return item;
+	}
+
+	public String getCBModelSelItem() {
+		String item = (String) cBchooseModel.getSelectedItem();
+		return item;
+	}
+
+	public String getCBZusatzoptionenSelItem() {
+		String item = (String) cBchooseZusatzoptionen.getSelectedItem();
+		return item;
+	}
+
+	public String getCBPaketSelItem() {
+		String item = (String) cBchoosePaket.getSelectedItem();
+		return item;
+	}
+
+	public String getCBDoorsSelItem() {
+		String item = (String) cBamountOfDoors.getSelectedItem();
+		return item;
+	}
+
 }

@@ -19,7 +19,7 @@ public class Feature {
 		features.add("3");
 	}
 
-	public ArrayList<String> setFeatureList(ArrayList<String> features, ArrayList<String> removeFeatures) {
+	public ArrayList<String> setAvailableFeatureList(ArrayList<String> features, ArrayList<String> removeFeatures) {
 
 		ArrayList<String> union = new ArrayList<String>(features);
 		union.addAll(removeFeatures);
@@ -33,8 +33,20 @@ public class Feature {
 	public ArrayList<String> checkAvailableFeatures(ArrayList<String> features, Object item) {
 		ArrayList<String> removeFeatures = new ArrayList<String>();
 		if (item == "1") {
+			removeFeatures.add("1");
 			removeFeatures.add("2");
-			setFeatureList(features, removeFeatures);
+			setAvailableFeatureList(features, removeFeatures);
+		}
+		if (item == "2") {
+			removeFeatures.add("1");
+			removeFeatures.add("2");
+			removeFeatures.add("3");
+			setAvailableFeatureList(features, removeFeatures);
+		}
+		if (item == "2") {
+			removeFeatures.add("2");
+			removeFeatures.add("3");
+			setAvailableFeatureList(features, removeFeatures);
 		}
 
 		return features;
