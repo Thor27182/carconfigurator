@@ -1,7 +1,6 @@
 package de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.impl;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -14,9 +13,9 @@ public class RegistrationUI extends JFrame {
 	
 	private JButton regButton;
 	private JTextField nameTField;
-	private JTextField kreditNummerTField;
+	private JTextField CreditCardNumberTField;
 	private JLabel nameLabel;
-	private JLabel kreditNummerLabel;
+	private JLabel CreditCardNumberLabel;
 	
 	private JPanel buttonPanel;
 	private JButton skipButton;
@@ -35,6 +34,13 @@ public class RegistrationUI extends JFrame {
 	}
 
 	private void composeUI() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch(ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		
 		this.titleLabel = new JLabel("Registrierung");
 		this.titlePanel = new JPanel();
 		this.titlePanel.add(this.titleLabel);
@@ -43,21 +49,22 @@ public class RegistrationUI extends JFrame {
 		this.mainPanel.setLayout(new GridLayout(3,2));
 		
 		this.nameTField = new JTextField(20);
-		this.kreditNummerTField = new JTextField(30);
+		this.CreditCardNumberTField = new JTextField(30);
 		this.nameLabel = new JLabel("Name");
-		this.kreditNummerLabel = new JLabel("Kreditnummer");
+		this.CreditCardNumberLabel = new JLabel("Kreditnummer");
 		this.regButton = new JButton("registrieren");
+		this.regButton.addActionListener(this.actionListener);
 		this.mainPanel.add(this.nameLabel);
 		this.mainPanel.add(this.nameTField);
-		this.mainPanel.add(this.kreditNummerLabel);
-		this.mainPanel.add(this.kreditNummerTField);
+		this.mainPanel.add(this.CreditCardNumberLabel);
+		this.mainPanel.add(this.CreditCardNumberTField);
 		this.mainPanel.add(this.regButton);
 		
 		
 		this.buttonPanel = new JPanel();
 		this.buttonPanel.setLayout(new BorderLayout());
 		this.skipButton = new JButton("überspringen");
-		
+		this.skipButton.addActionListener(this.actionListener);
 		this.buttonPanel.add(this.skipButton, BorderLayout.EAST);
 		
 		this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -79,6 +86,11 @@ public class RegistrationUI extends JFrame {
 	public JButton getSkipButton() {
 		return skipButton;
 	}
+	public String getNameTField() {
+		return nameTField.getText();
+	}
+	public String getCreditCardNumberTField() {
+		return CreditCardNumberTField.getText();
+	}
 	
-
 }

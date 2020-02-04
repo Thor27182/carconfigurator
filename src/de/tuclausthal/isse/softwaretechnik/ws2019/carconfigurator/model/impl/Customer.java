@@ -1,14 +1,14 @@
 package de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.impl;
 
 public class Customer {
-	private String kreditNummer;
+	private String CreditCardNumber;
 	private String name;
 	
 	public String getKreditNummer() {
-		return kreditNummer;
+		return CreditCardNumber;
 	}
-	public void setKreditNummer(String kreditNummer) {
-		this.kreditNummer = kreditNummer;
+	public void setCreditCardNumber(String kreditNummer) {
+		this.CreditCardNumber = kreditNummer;
 	}
 	public String getName() {
 		return name;

@@ -6,8 +6,14 @@ public class Car {
 	private Doors doorNumber;
 	private Fuel fuelTyp;
 	private String carModel;
+	private int carGeneration;
 	private ArrayList<Feature> features;
 	private Configurationpackage configurationpackage;
+	
+	public Car(String carModel, int carGeneration) {
+		this.carModel = carModel;
+		this.carGeneration = carGeneration;
+	}
 	
 	public Doors getDoorNumber() {
 		return doorNumber;
