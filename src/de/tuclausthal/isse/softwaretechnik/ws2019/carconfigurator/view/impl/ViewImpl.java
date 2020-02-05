@@ -67,6 +67,15 @@ public class ViewImpl implements ViewIf, ActionListener{
 		this.orderUI.doLayout();
 		this.orderUI.setVisible(true);
 	}
+	
+	@Override
+	public void resetCarConfiUI() {
+		this.carConfUI.getcBchooseModel().setSelectedItem("- none -");
+		this.carConfUI.getcBNumOfDoors().setSelectedItem("- none -");
+		this.carConfUI.getcBchooseKraftstoff().setSelectedItem("- none -");
+		this.carConfUI.getcBchooseZusatzoptionen().setSelectedItem("- none -");
+		this.carConfUI.getcBchoosePaket().setSelectedItem("- none -");
+	}
 	@Override
 	public void showOrderMessage(String message) {
 		this.showMessage(this.carListUI, "Bestellung", message);

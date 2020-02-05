@@ -45,5 +45,7 @@ public interface ViewIf extends ObserverIf{
 	public String getSelectedConfiPackage();
 
 	public String getSelectedNumberOfDoors();
+	
+	public void resetCarConfiUI();
 
 }

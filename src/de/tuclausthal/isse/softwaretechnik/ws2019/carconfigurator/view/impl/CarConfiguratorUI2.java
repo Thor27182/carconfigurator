@@ -289,10 +289,21 @@ public class CarConfiguratorUI2 extends JFrame {
 	public JFrame getFrame() {
 		return frame;
 	}
-	
-	
-	
-	
+	public JComboBox getcBchooseModel() {
+		return cBchooseModel;
+	}
+	public JComboBox getcBchooseKraftstoff() {
+		return cBchooseKraftstoff;
+	}
+	public JComboBox getcBchooseZusatzoptionen() {
+		return cBchooseZusatzoptionen;
+	}
+	public JComboBox getcBchoosePaket() {
+		return cBchoosePaket;
+	}
+	public JComboBox getcBNumOfDoors() {
+		return cBNumOfDoors;
+	}
 	
 	
 }
