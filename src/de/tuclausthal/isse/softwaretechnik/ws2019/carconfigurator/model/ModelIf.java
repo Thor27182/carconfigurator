@@ -14,6 +14,8 @@ public interface ModelIf extends ObservableIf{
 	
 	public ArrayList<Car> getPreConfiguredCars();
 	
+	public void setConfiguredCarDaten(String carModel, String fuelType, int numOfDoors, String confiPackage);
+	
 	public void setupDummy();
 
 }

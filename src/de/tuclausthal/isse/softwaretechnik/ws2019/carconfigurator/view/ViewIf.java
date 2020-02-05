@@ -20,12 +20,30 @@ public interface ViewIf extends ObserverIf{
 	
 	public void showRegistrationMessage(String message);
 	
-	public void showOrderUI();
+	public void showOrderUI(String message, String carModel, int numOfDoors, String fuelType, String confiPackage);
 	
-	public void showOrderMessage();
+	public void showOrderMessage(String message);
+	
+	public void hideCarListUI();
+	
+	public void hideCarConfiguratorUI();
+	
+	public void hideOrderUI();
 	
 	public String getName();
+	
 	public String getCreditCardNumber();
+	
 	public String getCheckBoxSelected();
+	
+	public String getSelectedFuelType();
+
+	public String getSelectedModel();
+
+	public String getSelectedFeature();
+
+	public String getSelectedConfiPackage();
+
+	public String getSelectedNumberOfDoors();
 
 }

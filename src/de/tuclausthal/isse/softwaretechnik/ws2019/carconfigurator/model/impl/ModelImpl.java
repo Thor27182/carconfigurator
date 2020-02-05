@@ -10,11 +10,8 @@ public class ModelImpl implements ModelIf {
 	
 	private Customer customer;
 	private boolean isRegisterd;
-	public Customer getCustomer() {
-		return customer;
-	}
+	private Car car;
 	
-
 	private ArrayList<Car> preConfiguredCars;
 	
 	private Vector<ObserverIf> observers;
@@ -74,6 +71,19 @@ public class ModelImpl implements ModelIf {
 		this.isRegisterd = isRegistered;
 		this.notifyObserver();
 	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
+	}
+	
 	@Override
 	public void setupDummy() {
 		Customer customer = new Customer();
@@ -91,6 +101,22 @@ public class ModelImpl implements ModelIf {
 		preConfiguredCars.add(audi_R8_2);
 		preConfiguredCars.add(vw_Golf_2);
 		
+	}
+	@Override
+	public void setConfiguredCarDaten(String carModel, String fuelType, int numOfDoors, String confiPackage) {
+		this.car = new Car();
+		this.car.setCarModel(carModel);
+		if(fuelType == "Benzin") {
+			this.car.setFuelTyp(Fuel.BENZIN);
+		}else if(fuelType == "Diesel") {
+			this.car.setFuelTyp(Fuel.DIESEL);
+		}if(numOfDoors == 3) {
+			this.car.setDoorNumber(Doors.THREE_DOORS);
+		}else if(numOfDoors == 5) {
+			this.car.setDoorNumber(Doors.FIVE_DOORS);
+		}
+		this.car.setConfigurationpackage(confiPackage);
+		this.notifyObserver();
 	}
 
 }

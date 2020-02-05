@@ -120,7 +120,7 @@ public class CarListUI extends JFrame {
 		this.mainPanel.setSize(1000,1000);
 		
 		this.orderButton = new JButton("bestellen");
-		this.configureButton = new JButton("configurieren");
+		this.configureButton = new JButton("Auto configurieren");
 		this.orderButton.setBounds(900, 500, 100, 50);
 		this.orderButton.addActionListener(this.actionListener);
 		this.configureButton.setBounds(1010, 500, 120, 50);

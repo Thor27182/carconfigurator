@@ -14,12 +14,13 @@ public class ViewImpl implements ViewIf, ActionListener{
 	
 	private RegistrationUI regUI;
 	private CarListUI carListUI;
-	private CarConfiguratorUI carConfUI;
+	private CarConfiguratorUI2 carConfUI;
 	private OrderUI orderUI;
 	
 	private String name;
 	private String creditCardNumber;
 	private String checkBoxSelected;
+	
 	public ViewImpl(ControllerIf controller, ModelIf model) {
 		if(model != null) {
 			this.model = model;
@@ -28,7 +29,9 @@ public class ViewImpl implements ViewIf, ActionListener{
 		this.controller = controller;
 		this.regUI = new RegistrationUI(this);
 		this.carListUI = new CarListUI(this);
-		this.orderUI = new OrderUI();
+		this.orderUI = new OrderUI(this);
+		this.carConfUI = new CarConfiguratorUI2(this);
+		
 	}
 	@Override
 	public void showMainUI() {
@@ -44,7 +47,8 @@ public class ViewImpl implements ViewIf, ActionListener{
 	}
 	@Override
 	public void showCarConfiguratorUI() {
-		
+//		this.carConfUI = new CarConfiguratorUI();
+		this.carConfUI.getFrame().setVisible(true);
 	}
 	@Override
 	public void showMessage(Component parent, String title, String message) {
@@ -55,11 +59,17 @@ public class ViewImpl implements ViewIf, ActionListener{
 		this.showMessage(this.regUI, "Registration", message);
 	}
 	@Override
-	public void showOrderUI() {
-		
+	public void showOrderUI(String message, String carModel, int numOfDoors, String fuelType, String confiPackage) {
+		this.orderUI.getCarModelLabel().setText(carModel);
+		this.orderUI.getFuelTypeLabel().setText(fuelType);
+		this.orderUI.getNumberOfDoorsLabel().setText(Integer.toString(numOfDoors));
+		this.orderUI.getConfigurationPackageLabel().setText(confiPackage);
+		this.orderUI.doLayout();
+		this.orderUI.setVisible(true);
 	}
 	@Override
-	public void showOrderMessage() {
+	public void showOrderMessage(String message) {
+		this.showMessage(this.carListUI, "Bestellung", message);
 	}
 	@Override
 	public void update() {
@@ -74,6 +84,12 @@ public class ViewImpl implements ViewIf, ActionListener{
 			this.controller.skipButtonClicked();
 		}else if(e.getSource() == this.carListUI.getOrderButton()) {
 			this.controller.orderButtonClicked();
+		}else if(e.getSource() == this.carListUI.getConfigureButton()) {
+			this.controller.configureButtonClicked();
+		}else if(e.getSource() == this.carConfUI.getBestellButton()) {
+			this.controller.confiUIOrderButtonClicked();
+		}else if(e.getSource() == this.orderUI.getOrderButton()) {
+			this.controller.orderUIOrderButtonClicked();
 		}
 		
 	}
@@ -111,6 +127,43 @@ public class ViewImpl implements ViewIf, ActionListener{
 			this.checkBoxSelected = null;
 		}
 		return this.checkBoxSelected;
+	}
+
+	@Override
+	public void hideCarListUI() {
+		this.carListUI.setVisible(false);
+		
+	}
+	
+	
+	@Override
+	public void hideCarConfiguratorUI() {
+		this.carConfUI.getFrame().setVisible(false);
+	}
+	
+	@Override
+	public void hideOrderUI() {
+		this.orderUI.setVisible(false);
+	}
+	@Override
+	public String getSelectedFuelType() {
+		return this.carConfUI.getCBKraftstoffSelItem().toString();
+	}
+	@Override
+	public String getSelectedModel() {
+		return this.carConfUI.getCBModelSelItem().toString();
+	}
+	@Override
+	public String getSelectedFeature() {
+		return this.carConfUI.getCBZusatzoptionenSelItem().toString();
+	}
+	@Override
+	public String getSelectedConfiPackage() {
+		return this.carConfUI.getCBPaketSelItem().toString();
+	}
+	@Override
+	public String getSelectedNumberOfDoors() {
+		return this.carConfUI.getCBDoorsSelItem().toString();
 	}
 	
 }

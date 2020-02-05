@@ -14,6 +14,10 @@ public class Car {
 		this.carModel = carModel;
 		this.carGeneration = carGeneration;
 	}
+	public Car() {
+		this.configurationpackage = new Configurationpackage();
+		this.features = new ArrayList<Feature>();
+	}
 	
 	public Doors getDoorNumber() {
 		return doorNumber;
@@ -43,8 +47,17 @@ public class Car {
 	public Configurationpackage getConfigurationpackage() {
 		return configurationpackage;
 	}
-	public void setConfigurationpackage(Configurationpackage configurationpackage) {
-		this.configurationpackage = configurationpackage;
+	public void setConfigurationpackage(String configurationpackage) {
+		this.configurationpackage.setName(configurationpackage);
+	}
+
+	public int getCarGeneration() {
+		return carGeneration;
+	}
+
+	public void setCarGeneration(int carGeneration) {
+		this.carGeneration = carGeneration;
 	}
 	
 }
+

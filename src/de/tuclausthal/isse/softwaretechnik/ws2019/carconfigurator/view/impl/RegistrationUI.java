@@ -74,11 +74,11 @@ public class RegistrationUI extends JFrame {
 		this.pack();
 		
 	}
-	public static void main(String[] args) {
-		RegistrationUI regGUI = new RegistrationUI();
-		regGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		regGUI.setVisible(true);
-	}
+//	public static void main(String[] args) {
+//		RegistrationUI regGUI = new RegistrationUI();
+//		regGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		regGUI.setVisible(true);
+//	}
 
 	public JButton getRegButton() {
 		return regButton;
