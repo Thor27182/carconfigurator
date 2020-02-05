@@ -7,85 +7,72 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class RegistrationUI extends JFrame {
-	
-	private JLabel titleLabel;
-	private JPanel titlePanel;
-	
+
+	//<--- Attributes --->
 	private JButton regButton;
+	private JButton skipButton;
+
 	private JTextField nameTField;
 	private JTextField CreditCardNumberTField;
-	private JLabel nameLabel;
-	private JLabel CreditCardNumberLabel;
-	
-	private JPanel buttonPanel;
-	private JButton skipButton;
-	
-	private JPanel mainPanel;
-	
+
 	private ActionListener actionListener;
-	
+
+	//<--- Constructor --->
 	public RegistrationUI(ActionListener actionListener) {
+		super("Registrierung");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.actionListener = actionListener;
 		this.composeUI();
 	}
-	public RegistrationUI() {
-		this.composeUI();
-	}
 
+	//<--- Methodes --->
 	private void composeUI() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch(ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-		
-		this.titleLabel = new JLabel("Registrierung");
-		this.titlePanel = new JPanel();
-		this.titlePanel.add(this.titleLabel);
-		
-		this.mainPanel = new JPanel();
-		this.mainPanel.setLayout(new GridLayout(3,2));
-		
+		//Panel for holding UI-Elements
+		JPanel mainPanel = new JPanel();
+		mainPanel.setLayout(new GridLayout(3,2));
+
+		//Create UI-Elemets Textframes
 		this.nameTField = new JTextField(20);
 		this.CreditCardNumberTField = new JTextField(30);
-		this.nameLabel = new JLabel("Name");
-		this.CreditCardNumberLabel = new JLabel("Kreditnummer");
+
+		//Create UI Elements Labels for Description
+		JLabel nameLabel = new JLabel("Name");
+		JLabel creditCardNumberLabel = new JLabel("Kreditnummer");
+
+		//Create UI-Element Button
 		this.regButton = new JButton("registrieren");
 		this.regButton.addActionListener(this.actionListener);
-		this.mainPanel.add(this.nameLabel);
-		this.mainPanel.add(this.nameTField);
-		this.mainPanel.add(this.CreditCardNumberLabel);
-		this.mainPanel.add(this.CreditCardNumberTField);
-		this.mainPanel.add(this.regButton);
-		
-		
-		this.buttonPanel = new JPanel();
-		this.buttonPanel.setLayout(new BorderLayout());
-		this.skipButton = new JButton("überspringen");
+		this.skipButton = new JButton("Ueberspringen");
 		this.skipButton.addActionListener(this.actionListener);
-		this.buttonPanel.add(this.skipButton, BorderLayout.EAST);
-		
-		this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-		this.getContentPane().add(this.titlePanel);
-		this.getContentPane().add(this.mainPanel);
-		this.getContentPane().add(this.buttonPanel);
+
+		//Add UI-Elements to Panel
+		mainPanel.add(nameLabel);
+		mainPanel.add(this.nameTField);
+		mainPanel.add(creditCardNumberLabel);
+		mainPanel.add(this.CreditCardNumberTField);
+		mainPanel.add(this.skipButton);
+		mainPanel.add(this.regButton);
+
+		this.getContentPane().add(mainPanel);
 		this.pack();
 		
 	}
 
+
+	//<--- Getter and Setter --->
 	public JButton getRegButton() {
 		return regButton;
 	}
+
 	public JButton getSkipButton() {
 		return skipButton;
 	}
+
 	public String getNameTField() {
 		return nameTField.getText();
 	}
+
 	public String getCreditCardNumberTField() {
 		return CreditCardNumberTField.getText();
 	}
-	
 }
