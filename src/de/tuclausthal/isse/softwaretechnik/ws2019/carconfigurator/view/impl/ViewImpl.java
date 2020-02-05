@@ -3,9 +3,12 @@ package de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.impl;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.ModelIf;
+import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.impl.Feature;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ViewIf;
 
 public class ViewImpl implements ViewIf, ActionListener{
@@ -20,6 +23,13 @@ public class ViewImpl implements ViewIf, ActionListener{
 	private String name;
 	private String creditCardNumber;
 	private String checkBoxSelected;
+	
+	private boolean heizungFeatureSelected;
+	private boolean sitzheizungFeatureSelected;
+	private boolean klimaanlageFeatureSelected;
+	private boolean infotainmentSystemFeatureSelected;
+	
+	private String[] selectedFeatures;
 	
 	public ViewImpl(ControllerIf controller, ModelIf model) {
 		if(model != null) {
@@ -47,7 +57,6 @@ public class ViewImpl implements ViewIf, ActionListener{
 	}
 	@Override
 	public void showCarConfiguratorUI() {
-//		this.carConfUI = new CarConfiguratorUI();
 		this.carConfUI.getFrame().setVisible(true);
 	}
 	@Override
@@ -59,11 +68,35 @@ public class ViewImpl implements ViewIf, ActionListener{
 		this.showMessage(this.regUI, "Registration", message);
 	}
 	@Override
-	public void showOrderUI(String message, String carModel, int numOfDoors, String fuelType, String confiPackage) {
+	public void showOrderUI(String message, String carModel, int numOfDoors, String fuelType, String confiPackage, ArrayList<Feature> features) {
 		this.orderUI.getCarModelLabel().setText(carModel);
 		this.orderUI.getFuelTypeLabel().setText(fuelType);
 		this.orderUI.getNumberOfDoorsLabel().setText(Integer.toString(numOfDoors));
 		this.orderUI.getConfigurationPackageLabel().setText(confiPackage);
+		this.selectedFeatures = new String[3];
+		for(int i = 0; i <3; i++) {
+			try {
+				if(features.get(i) != null) {
+					selectedFeatures[i] = features.get(i).getName();
+				}
+			}catch(Exception e) {
+				break;
+			}
+		}
+		try {
+			if(this.selectedFeatures[2] != null) {
+				this.orderUI.getFeatureLabel().setText(this.selectedFeatures[0] + " + " + this.selectedFeatures[1] + " + " + this.selectedFeatures[2]);
+			}else if(this.selectedFeatures[2] == null && this.selectedFeatures[1] != null) {
+				this.orderUI.getFeatureLabel().setText(this.selectedFeatures[0] + " + " + this.selectedFeatures[1]);
+			}else if(this.selectedFeatures[1] == null) {
+				this.orderUI.getFeatureLabel().setText(this.selectedFeatures[0]);
+			}else if(this.selectedFeatures[0] == null || this.selectedFeatures[0].isEmpty()) {
+				this.orderUI.getFeatureLabel().setText("- none -");
+			}
+		}catch(Exception e) {
+			
+		}
+		this.orderUI.getFeatureLabel();
 		this.orderUI.doLayout();
 		this.orderUI.setVisible(true);
 	}
@@ -73,7 +106,6 @@ public class ViewImpl implements ViewIf, ActionListener{
 		this.carConfUI.getcBchooseModel().setSelectedItem("- none -");
 		this.carConfUI.getcBNumOfDoors().setSelectedItem("- none -");
 		this.carConfUI.getcBchooseKraftstoff().setSelectedItem("- none -");
-		this.carConfUI.getcBchooseZusatzoptionen().setSelectedItem("- none -");
 		this.carConfUI.getcBchoosePaket().setSelectedItem("- none -");
 	}
 	@Override
@@ -83,7 +115,6 @@ public class ViewImpl implements ViewIf, ActionListener{
 	@Override
 	public void update() {
 		System.out.println("Update View");
-		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -102,7 +133,6 @@ public class ViewImpl implements ViewIf, ActionListener{
 		}else if(e.getSource() == this.carConfUI.getBackButton()) {
 			this.controller.carConfiUIBackButtonClicked();
 		}
-		
 	}
 	
 	
@@ -111,8 +141,6 @@ public class ViewImpl implements ViewIf, ActionListener{
 		if(this.regUI.getNameTField().toString() != null) {
 			name = this.regUI.getNameTField().toString();
 		}
-		
-		
 		return name;
 	}
 	@Override
@@ -143,10 +171,7 @@ public class ViewImpl implements ViewIf, ActionListener{
 	@Override
 	public void hideCarListUI() {
 		this.carListUI.getMainFrame().setVisible(false);
-		
 	}
-	
-	
 	@Override
 	public void hideCarConfiguratorUI() {
 		this.carConfUI.getFrame().setVisible(false);
@@ -165,10 +190,6 @@ public class ViewImpl implements ViewIf, ActionListener{
 		return this.carConfUI.getCBModelSelItem().toString();
 	}
 	@Override
-	public String getSelectedFeature() {
-		return this.carConfUI.getCBZusatzoptionenSelItem().toString();
-	}
-	@Override
 	public String getSelectedConfiPackage() {
 		return this.carConfUI.getCBPaketSelItem().toString();
 	}
@@ -176,5 +197,42 @@ public class ViewImpl implements ViewIf, ActionListener{
 	public String getSelectedNumberOfDoors() {
 		return this.carConfUI.getCBDoorsSelItem().toString();
 	}
+	@Override
+	public boolean heizungFeatureSelected() {
+		if(this.carConfUI.getHeizungFeature().isSelected()) {
+			this.heizungFeatureSelected = true;
+		}else {
+			this.heizungFeatureSelected = false;
+		}
+		return this.heizungFeatureSelected;
+	}
+	@Override
+	public boolean sitzheizungFeatureSelected() {
+		if(this.carConfUI.getSitzheizungFeature().isSelected()) {
+			this.sitzheizungFeatureSelected = true;
+		}else {
+			this.sitzheizungFeatureSelected = false;
+		}
+		return this.sitzheizungFeatureSelected;
+	}
+	@Override
+	public boolean klimaanlageFeatureSelected() {
+		if(this.carConfUI.getKlimaanlageFeature().isSelected()) {
+			this.klimaanlageFeatureSelected = true;
+		}else {
+			this.klimaanlageFeatureSelected = false;
+		}
+		return this.klimaanlageFeatureSelected;
+	}
+	@Override
+	public boolean infotainmentSystemFeatureSelected() {
+		if(this.carConfUI.getInfotainmentSystemFeature().isSelected()) {
+			this.infotainmentSystemFeatureSelected = true;
+		}else {
+			this.infotainmentSystemFeatureSelected = false;
+		}
+		return this.infotainmentSystemFeatureSelected;
+	}
+	
 	
 }

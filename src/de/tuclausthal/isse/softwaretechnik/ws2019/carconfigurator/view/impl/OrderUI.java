@@ -16,7 +16,6 @@ public class OrderUI extends JFrame {
 	
 	private JPanel mainPanel;
 	
-	
 	private JLabel carModelTitleLabel;
 	private JLabel carModelLabel;
 	private JPanel carModelPanel;
@@ -80,7 +79,7 @@ public class OrderUI extends JFrame {
 		this.fuelTypePanel.add(this.fuelTypeLabel, BorderLayout.CENTER);
 		
 		this.featureTitleLabel = new JLabel("Zusatzoption: ");
-		this.featureLabel = new JLabel("1");
+		this.featureLabel = new JLabel("- none -");
 		this.featurePanel = new JPanel(new BorderLayout());
 		this.featurePanel.add(this.featureTitleLabel, BorderLayout.WEST);
 		this.featurePanel.add(this.featureLabel, BorderLayout.CENTER);
@@ -108,6 +107,7 @@ public class OrderUI extends JFrame {
 		this.getContentPane().add(this.mainPanel);
 		this.getContentPane().add(this.buttonPanel);
 		this.pack();
+		this.setSize(1000, 500);
 	
 	
 	}

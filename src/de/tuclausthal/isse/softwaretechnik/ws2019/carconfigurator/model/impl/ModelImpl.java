@@ -11,7 +11,10 @@ public class ModelImpl implements ModelIf {
 	private Customer customer;
 	private boolean isRegisterd;
 	private Car car;
-	
+	private Feature klimaanlageFeature;
+	private Feature infotainmentSystemFeature;
+	private Feature sitzheizungFeature;
+	private Feature heizungFeature;
 	private ArrayList<Car> preConfiguredCars;
 	
 	private Vector<ObserverIf> observers;
@@ -21,6 +24,10 @@ public class ModelImpl implements ModelIf {
 		this.customer = new Customer();
 		this.preConfiguredCars = new ArrayList<>();
 		this.isRegisterd = false;
+		this.heizungFeature = new Feature("Heizung");
+		this.sitzheizungFeature = new Feature("Sitzheizung");
+		this.klimaanlageFeature = new Feature("Klimaanlage");
+		this.infotainmentSystemFeature = new Feature("Infotainment-System");
 	}
 	@Override
 	public void addObserver(ObserverIf observer) {
@@ -51,6 +58,7 @@ public class ModelImpl implements ModelIf {
 	
 	@Override
 	public ArrayList<Car> getPreConfiguredCars() {
+		this.notifyObserver();
 		return preConfiguredCars;
 	}
 		
@@ -84,9 +92,21 @@ public class ModelImpl implements ModelIf {
 		this.car = car;
 	}
 	
+	
+	public Feature getKlimaanlageFeature() {
+		return klimaanlageFeature;
+	}
+	public Feature getInfotainmentSystemFeature() {
+		return infotainmentSystemFeature;
+	}
+	public Feature getSitzheizungFeature() {
+		return sitzheizungFeature;
+	}
+	public Feature getHeizungFeature() {
+		return heizungFeature;
+	}
 	@Override
 	public void setupDummy() {
-		Customer customer = new Customer();
 		
 		Car bmw_X5_3 = new Car("BMW X5", 3);
 		Car bmw_X6_2 = new Car("BMW X6", 2);
@@ -103,7 +123,7 @@ public class ModelImpl implements ModelIf {
 		
 	}
 	@Override
-	public void setConfiguredCarDaten(String carModel, String fuelType, int numOfDoors, String confiPackage) {
+	public void setConfiguredCarDaten(String carModel, String fuelType, int numOfDoors, String confiPackage, ArrayList<Feature> features) {
 		this.car = new Car();
 		this.car.setCarModel(carModel);
 		if(fuelType == "Benzin") {
@@ -115,8 +135,10 @@ public class ModelImpl implements ModelIf {
 		}else if(numOfDoors == 5) {
 			this.car.setDoorNumber(Doors.FIVE_DOORS);
 		}
+		this.car.setFeatures(features);
 		this.car.setConfigurationpackage(confiPackage);
 		this.notifyObserver();
 	}
 
+	
 }

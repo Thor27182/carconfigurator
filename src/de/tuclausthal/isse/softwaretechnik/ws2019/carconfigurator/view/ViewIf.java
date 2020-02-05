@@ -1,10 +1,9 @@
 package de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view;
 
 import java.awt.Component;
+import java.util.ArrayList;
 
-import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.impl.CarListUI;
-import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.impl.RegistrationUI;
-import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.impl.ViewImpl;
+import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.impl.Feature;
 
 public interface ViewIf extends ObserverIf{
 	
@@ -20,7 +19,7 @@ public interface ViewIf extends ObserverIf{
 	
 	public void showRegistrationMessage(String message);
 	
-	public void showOrderUI(String message, String carModel, int numOfDoors, String fuelType, String confiPackage);
+	public void showOrderUI(String message, String carModel, int numOfDoors, String fuelType, String confiPackage, ArrayList<Feature> features);
 	
 	public void showOrderMessage(String message);
 	
@@ -40,12 +39,18 @@ public interface ViewIf extends ObserverIf{
 
 	public String getSelectedModel();
 
-	public String getSelectedFeature();
-
 	public String getSelectedConfiPackage();
 
 	public String getSelectedNumberOfDoors();
 	
 	public void resetCarConfiUI();
+	
+	public boolean heizungFeatureSelected();
+	
+	public boolean sitzheizungFeatureSelected();
+	
+	public boolean klimaanlageFeatureSelected();
+	
+	public boolean infotainmentSystemFeatureSelected();
 
 }
