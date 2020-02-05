@@ -109,19 +109,36 @@ public class ControllerImpl implements ControllerIf {
 			this.view.showCarConfiguratorUI();
 			
 		}
-		
 	}
 	
 	@Override
 	public void confiUIOrderButtonClicked() {
 		
-		this.currCarModel = this.view.getSelectedModel();
-		this.currNumOfDoors = Integer.parseInt(this.view.getSelectedNumberOfDoors());
-		this.currFuelType = this.view.getSelectedFuelType();
-		this.currConfiPackage = this.view.getSelectedConfiPackage();
+			this.currCarModel = this.view.getSelectedModel();
+			this.currFuelType = this.view.getSelectedFuelType();
+			this.currConfiPackage = this.view.getSelectedConfiPackage();
+			try {
+			this.currNumOfDoors = Integer.parseInt(this.view.getSelectedNumberOfDoors());
+			}catch(Exception e){
+//				this.view.showOrderMessage("Anzahl der Türen muss ausgewählt werden");
+			}
+//			this.currFuelType = this.view.getSelectedFuelType();
+//			this.currConfiPackage = this.view.getSelectedConfiPackage();
+			if(this.currCarModel != "- none -" && (this.currNumOfDoors == 3 || this.currNumOfDoors == 5) 
+					&& this.currFuelType != "- none -") {
+				this.model.setConfiguredCarDaten(this.currCarModel, this.currFuelType, this.currNumOfDoors, this.currConfiPackage);
+				this.view.showOrderUI("Antrag wurde angelegt", currCarModel, currNumOfDoors, currFuelType, currConfiPackage);
+			}else {
+				this.view.showOrderMessage("Automodell, Türen und Kraftstoff muss ausgewählt werden");
+			}
+			
 		
-		this.model.setConfiguredCarDaten(this.currCarModel, this.currFuelType, this.currNumOfDoors, this.currConfiPackage);
-		this.view.showOrderUI("Antrag wurde angelegt", currCarModel, currNumOfDoors, currFuelType, currConfiPackage);
+//		this.currCarModel = this.view.getSelectedModel();
+//		this.currNumOfDoors = Integer.parseInt(this.view.getSelectedNumberOfDoors());
+//		this.currFuelType = this.view.getSelectedFuelType();
+//		this.currConfiPackage = this.view.getSelectedConfiPackage();
+//		this.model.setConfiguredCarDaten(this.currCarModel, this.currFuelType, this.currNumOfDoors, this.currConfiPackage);
+//		this.view.showOrderUI("Antrag wurde angelegt", currCarModel, currNumOfDoors, currFuelType, currConfiPackage);
 	}
 
 	@Override
@@ -130,15 +147,16 @@ public class ControllerImpl implements ControllerIf {
 		this.view.hideOrderUI();
 		this.view.hideCarConfiguratorUI();
 		this.view.showCarListUI();
+		this.view.resetCarConfiUI();
 	}
 
 	@Override
 	public void carConfiUIBackButtonClicked() {
 		this.view.hideCarConfiguratorUI();
 		this.view.showCarListUI();
-		
+		this.view.resetCarConfiUI();
 	}
-
+	
 	
 
 }
