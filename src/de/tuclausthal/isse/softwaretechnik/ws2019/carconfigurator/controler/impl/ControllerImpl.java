@@ -122,13 +122,6 @@ public class ControllerImpl implements ControllerIf {
 		
 		this.model.setConfiguredCarDaten(this.currCarModel, this.currFuelType, this.currNumOfDoors, this.currConfiPackage);
 		this.view.showOrderUI("Antrag wurde angelegt", currCarModel, currNumOfDoors, currFuelType, currConfiPackage);
-//		this.view.showOrderMessage();
-//		this.view.getSelectedModel();
-//		this.view.getSelectedFuelType();
-//		this.view.getSelectedNumberOfDoors();
-//		this.view.getSelectedFeature();
-//		this.view.getSelectedConfiPackage();
-		
 	}
 
 	@Override

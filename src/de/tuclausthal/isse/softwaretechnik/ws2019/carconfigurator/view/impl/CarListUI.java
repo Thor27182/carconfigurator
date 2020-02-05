@@ -9,6 +9,7 @@ import javax.swing.*;
 
 
 public class CarListUI extends JFrame {
+	private JFrame mainFrame;
 	
 	private JLabel titleLabel;
 	private JPanel titlePanel;
@@ -49,8 +50,9 @@ public class CarListUI extends JFrame {
 		this.composeUI();
 	}
 	public void composeUI() {
+		this.mainFrame = new JFrame();
 
-		this.mainPanel = new JPanel();
+		this.mainPanel = new JPanel(null);
 		this.titleLabel = new JLabel("Autos Liste");
 		this.titleLabel.setBounds(900, 10, 100, 10);
 		this.mainPanel.add(titleLabel);
@@ -117,21 +119,19 @@ public class CarListUI extends JFrame {
 		this.mainPanel.add(im4ChBox);
 		this.mainPanel.add(im5Label);
 		this.mainPanel.add(im5ChBox);
-		this.mainPanel.setSize(1000,1000);
 		
 		this.orderButton = new JButton("bestellen");
 		this.configureButton = new JButton("Auto configurieren");
 		this.orderButton.setBounds(900, 500, 100, 50);
 		this.orderButton.addActionListener(this.actionListener);
-		this.configureButton.setBounds(1010, 500, 120, 50);
+		this.configureButton.setBounds(1010, 500, 160, 50);
 		this.configureButton.addActionListener(this.actionListener);
 		this.mainPanel.add(this.orderButton);
 		this.mainPanel.add(this.configureButton);
 		
-		
-		this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-		this.getContentPane().add(this.mainPanel);
-		this.pack();
+		this.mainFrame.add(mainPanel);
+		this.mainFrame.pack();
+		this.mainFrame.setSize(2000,1000);
 		
 		this.im1ChBox.addActionListener(new ActionListener() {
 			
@@ -246,6 +246,9 @@ public class CarListUI extends JFrame {
 	}
 	public JButton getConfigureButton() {
 		return configureButton;
+	}
+	public JFrame getMainFrame() {
+		return mainFrame;
 	}	
 	
 }
