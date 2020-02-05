@@ -35,7 +35,6 @@ public class CarListUI extends JFrame {
 	
 	private JButton orderButton;
 	private JButton configureButton;
-	private JPanel buttonPanel;
 	
 	private JPanel mainPanel;
 	
