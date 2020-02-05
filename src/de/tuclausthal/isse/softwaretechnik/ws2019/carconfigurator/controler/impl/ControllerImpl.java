@@ -132,6 +132,13 @@ public class ControllerImpl implements ControllerIf {
 		this.view.showCarListUI();
 	}
 
+	@Override
+	public void carConfiUIBackButtonClicked() {
+		this.view.hideCarConfiguratorUI();
+		this.view.showCarListUI();
+		
+	}
+
 	
 
 }

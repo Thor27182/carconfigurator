@@ -15,4 +15,6 @@ public interface ControllerIf extends ObserverIf {
 	public void confiUIOrderButtonClicked();
 	
 	public void orderUIOrderButtonClicked();
+	
+	public void carConfiUIBackButtonClicked();
 }

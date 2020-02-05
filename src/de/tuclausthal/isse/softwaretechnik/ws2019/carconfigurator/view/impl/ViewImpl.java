@@ -90,6 +90,8 @@ public class ViewImpl implements ViewIf, ActionListener{
 			this.controller.confiUIOrderButtonClicked();
 		}else if(e.getSource() == this.orderUI.getOrderButton()) {
 			this.controller.orderUIOrderButtonClicked();
+		}else if(e.getSource() == this.carConfUI.getBackButton()) {
+			this.controller.carConfiUIBackButtonClicked();
 		}
 		
 	}
