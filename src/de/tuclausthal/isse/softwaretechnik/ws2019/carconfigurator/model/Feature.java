@@ -6,7 +6,7 @@ import java.util.Observable;
 public class Feature extends Observable {
 	private String name;
 	private int price;
-	public static ArrayList<String> features = new ArrayList<String>();
+	public ArrayList<String> features = new ArrayList<String>();
 	public ArrayList<String> chosenFeatures = new ArrayList<String>();
 	public String[] arrayFeatures;
 
