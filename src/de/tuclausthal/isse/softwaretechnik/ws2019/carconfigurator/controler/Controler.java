@@ -1,17 +1,12 @@
 package de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler;
 
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.modelimplementation.Car;
-import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.modelimplementation.CarDealer;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.modelimplementation.Customer;
+import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.modelimplementation.Model;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.modelimplementation.Staffmember;
 
-public class Controler {
-    private CarDealer model;
-
-
-    public Controler(CarDealer model){
-        this.model = model;
-    }
+public class Controler implements  ModelObserver{
+    private Model model;
 
     public void addCarToModel(Car car){
         model.addCarToCatalog(car);
@@ -26,11 +21,14 @@ public class Controler {
         model.addCarToCatalog(new Car("VW Passat", 8, model));
 
         model.addStaffmemberToStaff(new Staffmember(model));
+    }
 
-        model.addCustomer(new Customer("Dieter", "1234", model));
+    public void setModel(Model model) {
+        this.model = model;
+    }
 
+    @Override
+    public void update() {
 
-
-        
     }
 }

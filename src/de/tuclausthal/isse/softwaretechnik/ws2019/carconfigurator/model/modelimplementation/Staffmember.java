@@ -5,20 +5,19 @@ import java.util.ArrayList;
 public class Staffmember {
 
     //<--- Associations --->
-    private CarDealer myEmployer;
+    private Model myEmployer;
     private ArrayList<Order> ordersToProcess;
 
     //<--- Constructors --->
-    public Staffmember(CarDealer myEmployer){
+    public Staffmember(Model myEmployer){
         this.myEmployer = myEmployer;
     }
 
     //<--- Getters and Setters --->
-    public CarDealer getMyEmployer() {
+    public Model getMyEmployer() {
         return myEmployer;
     }
-
-    public void setMyEmployer(CarDealer myEmployer) {
+    public void setMyEmployer(Model myEmployer) {
         this.myEmployer = myEmployer;
     }
 }

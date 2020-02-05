@@ -5,40 +5,38 @@ import java.util.ArrayList;
 public class Car {
 
     //<--- Attibuts --->
-    private String model;
+    private String carmodel;
     private int generation;
     private Doors doors;
     private Fuel fuel;
 
     //<--- Associations --->
+    private Model model;
     private ArrayList<Feature> features;
     private ArrayList<Configurationpackage> configurationpackages;
-    private CarDealer carDealer;
     private Customer customer;
     private Order order;
 
     //<--- Construtors --->
-    public Car(String model, int generation, CarDealer carDealer) {
-        this.model = model;
+    public Car(String carmodel, int generation, Model model) {
+        this.carmodel = carmodel;
         this.generation = generation;
         this.doors = null;
         this.fuel = null;
-        this.carDealer = carDealer;
+        this.model = model;
     }
 
     //<--- Getters and Setters --->
-    public String getModel() {
-        return model;
+    public String getCarmodel() {
+        return carmodel;
     }
-
-    public void setModel(String model) {
-        this.model = model;
+    public void setCarmodel(String carmodel) {
+        this.carmodel = carmodel;
     }
 
     public int getGeneration() {
         return generation;
     }
-
     public void setGeneration(int generation) {
         this.generation = generation;
     }
@@ -46,7 +44,6 @@ public class Car {
     public Doors getDoors() {
         return doors;
     }
-
     public void setDoors(Doors doors) {
         this.doors = doors;
     }
@@ -54,7 +51,6 @@ public class Car {
     public Fuel getFuel() {
         return fuel;
     }
-
     public void setFuel(Fuel fuel) {
         this.fuel = fuel;
     }
@@ -62,7 +58,6 @@ public class Car {
     public ArrayList<Feature> getFeatures() {
         return features;
     }
-
     public void setFeatures(ArrayList<Feature> features) {
         this.features = features;
     }
@@ -70,7 +65,6 @@ public class Car {
     public ArrayList<Configurationpackage> getConfigurationpackages() {
         return configurationpackages;
     }
-
     public void setConfigurationpackages(ArrayList<Configurationpackage> configurationpackages) {
         this.configurationpackages = configurationpackages;
     }

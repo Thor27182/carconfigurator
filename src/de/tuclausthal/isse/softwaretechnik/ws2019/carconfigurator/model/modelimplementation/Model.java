@@ -17,7 +17,7 @@ public class Model extends ObservableFromControler {
     private ArrayList<Staffmember> staffmembers;
 
     //<--- Constructors --->
-    public Controler(){
+    public Model(){
         this.carCatalog = new ArrayList<Car>();
         this.ourLoyalCustomers = new ArrayList<Customer>();
         this.orders = new ArrayList<>();
@@ -74,4 +74,8 @@ public class Model extends ObservableFromControler {
         ourLoyalCustomers.add(customer);
     }
 
+    @Override
+    public void notifyControler() {
+        controler.update();
+    }
 }

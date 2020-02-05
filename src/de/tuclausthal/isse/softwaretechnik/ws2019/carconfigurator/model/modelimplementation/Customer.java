@@ -9,12 +9,12 @@ public class Customer {
     private String creditcardnumber;
 
     //<--- Associations --->
-    private CarDealer myCarDealer;
+    private Model myCarDealer;
     private Car theCarToBeConfigured;
     private ArrayList<Order> myOrders;
 
     //<--- Constructors --->
-    public Customer(String name, String creditcardnumber, CarDealer myCarDealer){
+    public Customer(String name, String creditcardnumber, Model myCarDealer){
         this.name = name;
         this.creditcardnumber = creditcardnumber;
         this.myCarDealer = myCarDealer;
@@ -25,7 +25,6 @@ public class Customer {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -33,23 +32,20 @@ public class Customer {
     public String getCreditcardnumber() {
         return creditcardnumber;
     }
-
     public void setCreditcardnumber(String creditcardnumber) {
         creditcardnumber = creditcardnumber;
     }
 
-    public CarDealer getMyCarDealer() {
+    public Model getMyCarDealer() {
         return myCarDealer;
     }
-
-    public void setMyCarDealer(CarDealer myCarDealer) {
+    public void setMyCarDealer(Model myCarDealer) {
         this.myCarDealer = myCarDealer;
     }
 
     public Car getTheCarToBeConfigured() {
         return theCarToBeConfigured;
     }
-
     public void setTheCarToBeConfigured(Car theCarToBeConfigured) {
         this.theCarToBeConfigured = theCarToBeConfigured;
     }
@@ -57,7 +53,6 @@ public class Customer {
     public ArrayList<Order> getMyOrders() {
         return myOrders;
     }
-
     public void setMyOrders(ArrayList<Order> myOrders) {
         this.myOrders = myOrders;
     }
