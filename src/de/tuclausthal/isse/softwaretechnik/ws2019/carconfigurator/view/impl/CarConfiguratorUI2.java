@@ -12,29 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//import com.sun.crypto.provider.JceKeyStore;
-
-
 
 public class CarConfiguratorUI2 extends JFrame {
-	
-	private	JFrame frame;
-	private JPanel panel;
-	
-	private JLabel labelChooseModel;
-	private JLabel labelNumOfDoors;
-	private JLabel labelFuelType;
-	private JLabel labelFeatures;
-	private JLabel labelPaket;
-	
+
+	//<--- Attributes --->
 	private JButton bestellButton;
 	private JButton backButton;
-	
-	private String availableModel[];
-	private String numOfDoors[];
-	private String kraftstoff[];
-	private String paket[];
-	
+
 	private JCheckBox KlimaanlageFeature;
 	private JCheckBox infotainmentSystemFeature;
 	private JCheckBox SitzheizungFeature;
@@ -46,33 +30,32 @@ public class CarConfiguratorUI2 extends JFrame {
 	private JComboBox cBNumOfDoors;
 	
 	private ActionListener actionListener;
-	
-	private JLabel featuresLabel;
-	private JPanel featuresPanel;
-	
+
+
+	//<--- Constructor --->
 	public CarConfiguratorUI2(ActionListener actionListener) {
+		super("Autokonfigurator");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.actionListener = actionListener;
 		this.composeUI();
 	}
-	public CarConfiguratorUI2() {
-		this.composeUI();
-	}
+
+	//<--- Methodes --->
 	public void composeUI() {
-		this.frame = new JFrame("Autokonfigurator");
-		this.frame.setLayout(new BorderLayout());
-		this.panel = new JPanel();
+
+		this.setLayout(new BorderLayout());
+		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(6, 2));
-		frame.add(panel);
+		this.add(panel);
+
+		JLabel labelChooseModel = new JLabel("Generation auswÃ¤hlen" );
+		JLabel labelNumOfDoors = new JLabel("waehlen Sie die Anzahl der Tueren");
+		JLabel labelFuelType = new JLabel("waehlen Sie Kraftstoff");
+		JLabel labelPaket = new JLabel("waehlen Sie ein Ausstattungspaket");
 		
-		this.labelChooseModel = new JLabel("wählen Sie ihr Automodell");
-		this.labelNumOfDoors = new JLabel("wählen Sie die Anzahl der Türen");
-		this.labelFuelType = new JLabel("wählen Sie Kraftstoff");
-		this.labelPaket = new JLabel("wählen Sie ein Ausstattungspaket");
-		
-		this.bestellButton = new JButton("bestätigen");
+		this.bestellButton = new JButton("bestaetigen");
 		this.bestellButton.addActionListener(this.actionListener);
-		this.backButton = new JButton("zurück");
+		this.backButton = new JButton("zurueck");
 		this.backButton.addActionListener(this.actionListener);
 
 		
@@ -80,24 +63,24 @@ public class CarConfiguratorUI2 extends JFrame {
 		this.cBchooseKraftstoff = new JComboBox();
 		this.cBchoosePaket = new JComboBox();
 		this.cBNumOfDoors = new JComboBox();
-	
-		availableModel = new String[4];
-		availableModel[0] = "- none -";
-		availableModel[1] = "Golf 4";
-		availableModel[2] = "Golf 3";
-		availableModel[3] = "Golf 2";
 
-		numOfDoors = new String[3];
+		String[] availableModel = new String[4];
+		availableModel[0] = "- none -";
+		availableModel[1] = "4";
+		availableModel[2] = "3";
+		availableModel[3] = "2";
+
+		String[] numOfDoors = new String[3];
 		numOfDoors[0] = "- none -";
 		numOfDoors[1] = "3";
 		numOfDoors[2] = "5";
 
-		kraftstoff = new String[3];
+		String[] kraftstoff = new String[3];
 		kraftstoff[0] = "- none -";
 		kraftstoff[1] = "Benzin";
 		kraftstoff[2] = "Diesel";
 
-		paket = new String[3];
+		String[] paket = new String[3];
 		paket[0] = "- none -";
 		paket[1] = "Sport-Paket";
 		paket[2] = "Luxus-Paket";
@@ -131,8 +114,8 @@ public class CarConfiguratorUI2 extends JFrame {
 		
 		panel.add(labelChooseModel); // Label Model
 		panel.add(cBchooseModel); // Dropdown Model
-		panel.add(labelNumOfDoors); // label Türen
-		panel.add(cBNumOfDoors); // Dropdown Türen
+		panel.add(labelNumOfDoors); // label Tueren
+		panel.add(cBNumOfDoors); // Dropdown Tueren
 		panel.add(labelFuelType); // Label Kraftstoff
 		panel.add(cBchooseKraftstoff); // Dropdown Kraftstoff
 		panel.add(labelPaket); // Label Kraftstoff
@@ -150,18 +133,18 @@ public class CarConfiguratorUI2 extends JFrame {
 		this.SitzheizungFeature.addActionListener(this.actionListener);
 		this.heizungFeature = new JCheckBox("Heizung");
 		this.heizungFeature.addActionListener(this.actionListener);
-		
-		this.featuresLabel = new JLabel("Wählen Sie gewünschte Zusatzoptionen");
-		this.featuresPanel = new JPanel();
-		this.featuresPanel.add(this.featuresLabel);
-		this.featuresPanel.add(this.KlimaanlageFeature);
-		this.featuresPanel.add(this.infotainmentSystemFeature);
-		this.featuresPanel.add(this.SitzheizungFeature);
-		this.featuresPanel.add(this.heizungFeature);
-		this.frame.add(this.panel, BorderLayout.CENTER);
-		this.frame.add(this.featuresPanel, BorderLayout.SOUTH);
-		this.frame.pack();
-		this.frame.setSize(600, 400);
+
+		JLabel featuresLabel = new JLabel("Waehlen Sie gewuenschte Zusatzoptionen");
+		JPanel featuresPanel = new JPanel();
+		featuresPanel.add(featuresLabel);
+		featuresPanel.add(this.KlimaanlageFeature);
+		featuresPanel.add(this.infotainmentSystemFeature);
+		featuresPanel.add(this.SitzheizungFeature);
+		featuresPanel.add(this.heizungFeature);
+		this.add(panel, BorderLayout.CENTER);
+		this.add(featuresPanel, BorderLayout.SOUTH);
+		this.pack();
+		this.setSize(600, 400);
 		
 		this.SitzheizungFeature.addActionListener(new ActionListener() {
 			
@@ -200,6 +183,7 @@ public class CarConfiguratorUI2 extends JFrame {
 	public  void setCBchooseKraftstoff(String[] stringArray) {
 		cBchooseKraftstoff = new JComboBox(stringArray);
 	}
+
 	public  void setCBchoosePaket(String[] stringArray) {
 		cBchoosePaket = new JComboBox(stringArray);
 	}
@@ -229,9 +213,6 @@ public class CarConfiguratorUI2 extends JFrame {
 
 	public JButton getBackButton() {
 		return backButton;
-	}
-	public JFrame getFrame() {
-		return frame;
 	}
 	public JComboBox getcBchooseModel() {
 		return cBchooseModel;

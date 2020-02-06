@@ -16,6 +16,7 @@ public class ModelImpl implements ModelIf {
 	private Feature sitzheizungFeature;
 	private Feature heizungFeature;
 	private ArrayList<Car> preConfiguredCars;
+
 	
 	private Vector<ObserverIf> observers;
 	
