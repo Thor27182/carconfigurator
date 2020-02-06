@@ -53,7 +53,7 @@ public class ViewImpl implements ViewIf, ActionListener{
 	}
 	@Override
 	public void showCarListUI() {
-		this.carListUI.getMainFrame().setVisible(true);
+		this.carListUI.setVisible(true);
 	}
 	@Override
 	public void showCarConfiguratorUI() {
@@ -170,7 +170,7 @@ public class ViewImpl implements ViewIf, ActionListener{
 
 	@Override
 	public void hideCarListUI() {
-		this.carListUI.getMainFrame().setVisible(false);
+		this.carListUI.setVisible(false);
 	}
 	@Override
 	public void hideCarConfiguratorUI() {

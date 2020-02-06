@@ -9,89 +9,69 @@ import javax.swing.*;
 
 
 public class CarListUI extends JFrame {
-	private JFrame mainFrame;
-	
-	private JLabel titleLabel;
+
+	//<--- Attributes --->
+
 	private JPanel titlePanel;
-	
-	private ImageIcon image1;
-	private ImageIcon image2;
-	private ImageIcon image3;
-	private ImageIcon image4;
-	private ImageIcon image5;
-	
-	private JLabel im1Label;
-	private JLabel im2Label;
-	private JLabel im3Label;
-	private JLabel im4Label;
-	private JLabel im5Label;
-	
+
 	private JCheckBox im1ChBox;
 	private JCheckBox im2ChBox;
 	private JCheckBox im3ChBox;
 	private JCheckBox im4ChBox;
 	private JCheckBox im5ChBox;
 
-	
 	private JButton orderButton;
 	private JButton configureButton;
-	
-	private JPanel mainPanel;
-	
+
 	private ActionListener actionListener;
 
+
+	//<--- Constructor --->
 	public CarListUI(ActionListener actionListener) {
+		super("Auto Liste");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.actionListener = actionListener;
 		this.composeUI();
 	}
-	private CarListUI() {
-		this.composeUI();
-	}
-	public void composeUI() {
-		this.mainFrame = new JFrame();
 
-		this.mainPanel = new JPanel(null);
-		this.titleLabel = new JLabel("Autos Liste");
-		this.titleLabel.setBounds(900, 10, 100, 10);
-		this.mainPanel.add(titleLabel);
-		
-		this.image1 = new ImageIcon(getClass().getResource("BMW_X5_3.jpg"));
-		Image img1 = image1.getImage();
-		Image newImg1 = img1.getScaledInstance(350, 240, java.awt.Image.SCALE_SMOOTH);
-		this.image1 = new ImageIcon(newImg1);
-		
-		this.image2 = new ImageIcon(getClass().getResource("Audi_R8_2.jpg"));
-		Image img2 = image2.getImage();
-		Image newImg2 = img2.getScaledInstance(350, 240, java.awt.Image.SCALE_SMOOTH);
-		this.image2 = new ImageIcon(newImg2);
-		
-		this.image3 = new ImageIcon(getClass().getResource("Audi_A4_4.jpg"));
-		Image img3 = image3.getImage();
-		Image newImg3 = img3.getScaledInstance(350, 240, java.awt.Image.SCALE_SMOOTH);
-		this.image3 = new ImageIcon(newImg3);
-		
-		this.image4 = new ImageIcon(getClass().getResource("BMW_X6_2.jpg"));
-		Image img4 = image4.getImage();
-		Image newImg4 = img4.getScaledInstance(350, 240, java.awt.Image.SCALE_SMOOTH);
-		this.image4 = new ImageIcon(newImg4);
-		
-		this.image5 = new ImageIcon(getClass().getResource("VW_Golf_2.jpg"));
-		Image img5 = image5.getImage();
-		Image newImg5 = img5.getScaledInstance(350, 240, java.awt.Image.SCALE_SMOOTH);
-		this.image5 = new ImageIcon(newImg5);
-		
-		this.im1Label = new JLabel(image1);
-		this.im1Label.setBounds(10, 60, 350, 240);
-		this.im2Label = new JLabel(image2);
-		this.im2Label.setBounds(370, 60, 350, 240);
-		this.im3Label = new JLabel(image3);
-		this.im3Label.setBounds(730, 60, 350, 240);
-		this.im4Label = new JLabel(image4);
-		this.im4Label.setBounds(1090, 60, 350, 240);
-		this.im5Label = new JLabel(image5);
-		this.im5Label.setBounds(1450, 60, 350, 240);
-		
+	//<--- Methodes --->
+
+	/*
+	 * Creates an ImageIcon with the size of 350 x 240
+	 */
+	ImageIcon render(ImageIcon icon){
+		Image image = icon.getImage().getScaledInstance(350, 240, Image.SCALE_SMOOTH);
+		icon = new ImageIcon(image);
+		return  icon;
+	}
+
+	/*
+	 * Creates the UI for the Car-List
+	 */
+	public void composeUI() {
+		//Panel for holding UI-Elements
+		JPanel mainPanel = new JPanel();
+
+		//Create Pictures for the View
+		ImageIcon image1 = render(new ImageIcon(getClass().getResource("BMW_X5_3.jpg")));
+		ImageIcon image2 = render(new ImageIcon(getClass().getResource("Audi_R8_2.jpg")));
+		ImageIcon image3 = render(new ImageIcon(getClass().getResource("Audi_A4_4.jpg")));
+		ImageIcon image4 = render(new ImageIcon(getClass().getResource("BMW_X6_2.jpg")));
+		ImageIcon image5 = render(new ImageIcon(getClass().getResource("VW_Golf_2.jpg")));
+
+		//Create Labels for the Pictures
+		JLabel im1Label = new JLabel(image1);
+		im1Label.setBounds(10, 60, 350, 240);
+		JLabel im2Label = new JLabel(image2);
+		im2Label.setBounds(370, 60, 350, 240);
+		JLabel im3Label = new JLabel(image3);
+		im3Label.setBounds(730, 60, 350, 240);
+		JLabel im4Label = new JLabel(image4);
+		im4Label.setBounds(1090, 60, 350, 240);
+		JLabel im5Label = new JLabel(image5);
+		im5Label.setBounds(1450, 60, 350, 240);
+
+		//Create Checkboxes for the Pictures
 		this.im1ChBox = new JCheckBox("BMW X5 3");
 		this.im1ChBox.setBounds(10,310, 100, 20);
 		this.im1ChBox.addActionListener(this.actionListener);
@@ -108,16 +88,16 @@ public class CarListUI extends JFrame {
 		this.im5ChBox.setBounds(1450 ,310, 100, 20);
 		this.im5ChBox.addActionListener(this.actionListener);
 		
-		this.mainPanel.add(im1Label);
-		this.mainPanel.add(im1ChBox);
-		this.mainPanel.add(im2Label);
-		this.mainPanel.add(im2ChBox);
-		this.mainPanel.add(im3Label);
-		this.mainPanel.add(im3ChBox);
-		this.mainPanel.add(im4Label);
-		this.mainPanel.add(im4ChBox);
-		this.mainPanel.add(im5Label);
-		this.mainPanel.add(im5ChBox);
+		mainPanel.add(im1Label);
+		mainPanel.add(im1ChBox);
+		mainPanel.add(im2Label);
+		mainPanel.add(im2ChBox);
+		mainPanel.add(im3Label);
+		mainPanel.add(im3ChBox);
+		mainPanel.add(im4Label);
+		mainPanel.add(im4ChBox);
+		mainPanel.add(im5Label);
+		mainPanel.add(im5ChBox);
 		
 		this.orderButton = new JButton("bestellen");
 		this.configureButton = new JButton("Auto configurieren");
@@ -125,12 +105,12 @@ public class CarListUI extends JFrame {
 		this.orderButton.addActionListener(this.actionListener);
 		this.configureButton.setBounds(1010, 500, 160, 50);
 		this.configureButton.addActionListener(this.actionListener);
-		this.mainPanel.add(this.orderButton);
-		this.mainPanel.add(this.configureButton);
+		mainPanel.add(this.orderButton);
+		mainPanel.add(this.configureButton);
 		
-		this.mainFrame.add(mainPanel);
-		this.mainFrame.pack();
-		this.mainFrame.setSize(2000,1000);
+		this.add(mainPanel);
+		this.pack();
+		this.setSize(2000,1000);
 		
 		this.im1ChBox.addActionListener(new ActionListener() {
 			
@@ -224,7 +204,9 @@ public class CarListUI extends JFrame {
 		});
 	}
 	
-	
+
+
+	//<--- Getters and Setters
 	public JCheckBox getIm1ChBox() {
 		return im1ChBox;
 	}
@@ -246,8 +228,7 @@ public class CarListUI extends JFrame {
 	public JButton getConfigureButton() {
 		return configureButton;
 	}
-	public JFrame getMainFrame() {
-		return mainFrame;
-	}	
+
+
 	
 }
