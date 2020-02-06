@@ -9,6 +9,17 @@ import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.impl.Mod
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ViewIf;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.impl.ViewImpl;
 
+/**
+ * 
+ * @author Yamen Sahyouni, ISSE, TU Clausthal
+ * @author Thore Braun, ISSE, TU Clausthal
+ * @author Mohamed Dawod, ISSE, TU Clausthal
+ * @author Mohamad Deyaa Akil, ISSE, TU Clausthal
+ * @author Oliver Greulich, ISSE, TU Clausthal
+ * @author Bassel Rafie, ISSE, TU Clausthal
+ * @author Amirreza Fahimifarimani, ISSE, TU Clausthal
+ *
+ */
 public class ControllerImpl implements ControllerIf {
 	
 	private ModelIf model;
@@ -44,7 +55,11 @@ public class ControllerImpl implements ControllerIf {
 	public String getCurrentlySelectedCar() {
 		return currentlySelectedCar;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf#registrationButtonClicked()
+	 */
 	@Override
 	public void registrationButtonClicked() {
 		
@@ -64,13 +79,21 @@ public class ControllerImpl implements ControllerIf {
 			this.view.showRegistrationMessage("Name und Kreditkartenummer soll eingegeben wird!");
 		}
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf#skipButtonClicked()
+	 */
 	@Override
 	public void skipButtonClicked() {
 		this.view.hideMainUI();
 		this.view.showCarListUI();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf#orderButtonClicked()
+	 */
 	@Override
 	public void orderButtonClicked() {
 		if(this.view.getCheckBoxSelected() != null) {
@@ -97,7 +120,11 @@ public class ControllerImpl implements ControllerIf {
 			}
 			this.currentlySelectedCar = null;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf#configureButtonClicked()
+	 */
 	@Override
 	public void configureButtonClicked() {
 		if(this.model.getIsRegistered() == false) {
@@ -110,6 +137,10 @@ public class ControllerImpl implements ControllerIf {
 		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf#confiUIOrderButtonClicked()
+	 */
 	@Override
 	public void confiUIOrderButtonClicked() {
 			
@@ -137,7 +168,7 @@ public class ControllerImpl implements ControllerIf {
 						this.currFeatures.add(this.model.getSitzheizungFeature());
 					}
 				this.model.setConfiguredCarDaten(this.currCarModel, this.currFuelType, this.currNumOfDoors, this.currConfiPackage, this.currFeatures);
-				this.view.showOrderUI("Antrag wurde angelegt", currCarModel, currNumOfDoors, currFuelType, currConfiPackage, this.currFeatures);
+				this.view.showOrderUI(currCarModel, currNumOfDoors, currFuelType, currConfiPackage, this.currFeatures);
 				
 			}else if((this.currCarModel != "- none -" && (this.currNumOfDoors == 3 || this.currNumOfDoors == 5) && this.currFuelType !="- none -")
 					&& (this.view.klimaanlageFeatureSelected() == true && this.view.infotainmentSystemFeatureSelected() == true)) {
@@ -154,14 +185,18 @@ public class ControllerImpl implements ControllerIf {
 						this.currFeatures.add(this.model.getInfotainmentSystemFeature());
 					}
 					this.model.setConfiguredCarDaten(this.currCarModel, this.currFuelType, this.currNumOfDoors, this.currConfiPackage, this.currFeatures);
-					this.view.showOrderUI("Antrag wurde angelegt", currCarModel, currNumOfDoors, currFuelType, currConfiPackage, this.currFeatures);
+					this.view.showOrderUI(currCarModel, currNumOfDoors, currFuelType, currConfiPackage, this.currFeatures);
 
 			}else if((this.currCarModel != "- none -" && (this.currNumOfDoors != 3 || this.currNumOfDoors != 5) && (this.currFuelType !="- none -" 
 					|| this.currFuelType == "- none -"))){
 				this.view.showOrderMessage("Automodell, Türen und Kraftstoff muss ausgewählt werden");
 			}
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf#orderUIOrderButtonClicked()
+	 */
 	@Override
 	public void orderUIOrderButtonClicked() {
 		this.view.showOrderMessage("Ihr Antrag wurde erfolgreich abgeschickt");
@@ -171,6 +206,10 @@ public class ControllerImpl implements ControllerIf {
 		this.view.resetCarConfiUI();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.controler.ControllerIf#carConfiUIBackButtonClicked()
+	 */
 	@Override
 	public void carConfiUIBackButtonClicked() {
 		this.view.hideCarConfiguratorUI();

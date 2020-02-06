@@ -11,6 +11,17 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+/**
+ * 
+ * @author Yamen Sahyouni, ISSE, TU Clausthal
+ * @author Thore Braun, ISSE, TU Clausthal
+ * @author Mohamed Dawod, ISSE, TU Clausthal
+ * @author Mohamad Deyaa Akil, ISSE, TU Clausthal
+ * @author Oliver Greulich, ISSE, TU Clausthal
+ * @author Bassel Rafie, ISSE, TU Clausthal
+ * @author Amirreza Fahimifarimani, ISSE, TU Clausthal
+ *
+ */
 
 
 public class CarConfiguratorUI2 extends JFrame {
@@ -144,7 +155,7 @@ public class CarConfiguratorUI2 extends JFrame {
 		this.add(panel, BorderLayout.CENTER);
 		this.add(featuresPanel, BorderLayout.SOUTH);
 		this.pack();
-		this.setSize(600, 400);
+		this.setSize(1000, 500);
 		
 		this.SitzheizungFeature.addActionListener(new ActionListener() {
 			

@@ -68,7 +68,7 @@ public class ViewImpl implements ViewIf, ActionListener{
 		this.showMessage(this.regUI, "Registration", message);
 	}
 	@Override
-	public void showOrderUI(String message, String carModel, int numOfDoors, String fuelType, String confiPackage, ArrayList<Feature> features) {
+	public void showOrderUI(String carModel, int numOfDoors, String fuelType, String confiPackage, ArrayList<Feature> features) {
 		this.orderUI.getCarModelLabel().setText(carModel);
 		this.orderUI.getFuelTypeLabel().setText(fuelType);
 		this.orderUI.getNumberOfDoorsLabel().setText(Integer.toString(numOfDoors));

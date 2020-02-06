@@ -6,6 +6,18 @@ import java.util.Vector;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.ModelIf;
 import de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ObserverIf;
 
+/**
+ * 
+ * @author Yamen Sahyouni, ISSE, TU Clausthal
+ * @author Thore Braun, ISSE, TU Clausthal
+ * @author Mohamed Dawod, ISSE, TU Clausthal
+ * @author Mohamad Deyaa Akil, ISSE, TU Clausthal
+ * @author Oliver Greulich, ISSE, TU Clausthal
+ * @author Bassel Rafie, ISSE, TU Clausthal
+ * @author Amirreza Fahimifarimani, ISSE, TU Clausthal
+ *
+ */
+
 public class ModelImpl implements ModelIf {
 	
 	private Customer customer;
@@ -30,6 +42,10 @@ public class ModelImpl implements ModelIf {
 		this.klimaanlageFeature = new Feature("Klimaanlage");
 		this.infotainmentSystemFeature = new Feature("Infotainment-System");
 	}
+	
+	/* (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ObserverIf#addObserver(de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ObserverIf)
+	 */
 	@Override
 	public void addObserver(ObserverIf observer) {
 		if (observer != null) {
@@ -39,7 +55,10 @@ public class ModelImpl implements ModelIf {
 		}
 		
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ObserverIf#removeObserver(de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ObserverIf)
+	 */
 	@Override
 	public void removeObserver(ObserverIf observer) {
 		if (observer != null) {
@@ -49,7 +68,10 @@ public class ModelImpl implements ModelIf {
 		}
 		
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.view.ObserverIf#notifyObserver()
+	 */
 	@Override
 	public void notifyObserver() {
 		for (ObserverIf obs : this.observers) {
@@ -106,6 +128,10 @@ public class ModelImpl implements ModelIf {
 	public Feature getHeizungFeature() {
 		return heizungFeature;
 	}
+	
+	/* (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.ModelIF#setupDummy()
+	 */
 	@Override
 	public void setupDummy() {
 		
@@ -123,6 +149,10 @@ public class ModelImpl implements ModelIf {
 		preConfiguredCars.add(vw_Golf_2);
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see de.tuclausthal.isse.softwaretechnik.ws2019.carconfigurator.model.ModelIF#setConfiguredCarDaten()
+	 */
 	@Override
 	public void setConfiguredCarDaten(String carModel, String fuelType, int numOfDoors, String confiPackage, ArrayList<Feature> features) {
 		this.car = new Car();

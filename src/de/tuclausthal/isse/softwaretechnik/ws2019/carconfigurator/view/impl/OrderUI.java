@@ -9,6 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Yamen Sahyouni, ISSE, TU Clausthal
+ * @author Thore Braun, ISSE, TU Clausthal
+ * @author Mohamed Dawod, ISSE, TU Clausthal
+ * @author Mohamad Deyaa Akil, ISSE, TU Clausthal
+ * @author Oliver Greulich, ISSE, TU Clausthal
+ * @author Bassel Rafie, ISSE, TU Clausthal
+ * @author Amirreza Fahimifarimani, ISSE, TU Clausthal
+ *
+ */
+
 public class OrderUI extends JFrame {
 
 	//<--- Attributes --->
