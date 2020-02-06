@@ -87,7 +87,8 @@ public class CarListUI extends JFrame {
 		this.im5ChBox = new JCheckBox("VW Golf 2");
 		this.im5ChBox.setBounds(1450 ,310, 100, 20);
 		this.im5ChBox.addActionListener(this.actionListener);
-		
+
+		//Add UI-Elements to Panel
 		mainPanel.add(im1Label);
 		mainPanel.add(im1ChBox);
 		mainPanel.add(im2Label);
@@ -98,20 +99,26 @@ public class CarListUI extends JFrame {
 		mainPanel.add(im4ChBox);
 		mainPanel.add(im5Label);
 		mainPanel.add(im5ChBox);
-		
+
+		//create Buttons
 		this.orderButton = new JButton("bestellen");
 		this.configureButton = new JButton("Auto configurieren");
 		this.orderButton.setBounds(900, 500, 100, 50);
 		this.orderButton.addActionListener(this.actionListener);
 		this.configureButton.setBounds(1010, 500, 160, 50);
 		this.configureButton.addActionListener(this.actionListener);
+
+		//Add Buttons to the Panel
 		mainPanel.add(this.orderButton);
 		mainPanel.add(this.configureButton);
-		
+
+		//Add Panel to the Frame
 		this.add(mainPanel);
 		this.pack();
 		this.setSize(2000,1000);
-		
+
+
+		//Add ActionListener to the Buttons
 		this.im1ChBox.addActionListener(new ActionListener() {
 			
 			@Override
